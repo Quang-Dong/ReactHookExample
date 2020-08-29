@@ -13,8 +13,11 @@ const Drawer = createDrawerNavigator();
 
 const App = () => (
   <SafeAreaView style={{flex: 1}}>
+    <StatusBar barStyle={'dark-content'} backgroundColor="#E3F1FA" />
     <NavigationContainer>
-      <Drawer.Navigator drawerContent={(props) => <DrawerHome {...props} />}>
+      <Drawer.Navigator
+        drawerStyle={{backgroundColor: '#E3F1FA'}}
+        drawerContent={(props) => <DrawerHome {...props} />}>
         <Drawer.Screen name="Main" component={ScreenMain} />
         <Drawer.Screen name="Drawer" component={ScreenDrawer} />
       </Drawer.Navigator>

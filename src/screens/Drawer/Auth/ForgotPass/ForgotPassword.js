@@ -5,10 +5,16 @@ import {TouchableOpacity, SafeAreaView, TextInput} from 'react-native';
 import {Neomorph} from 'react-native-neomorph-shadows';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const SignUp = () => {
+const ForgotPassword = () => {
   const [hidePass, setHidePass] = useState(true);
   return (
-    <SafeAreaView style={{alignItems: 'center'}}>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        alignItems: 'center',
+        backgroundColor: '#E3F1FA',
+        justifyContent: 'center',
+      }}>
       <Neomorph
         inner
         swapShadows // <- change zIndex of each shadow color
@@ -20,34 +26,21 @@ const SignUp = () => {
           height: 50,
           marginVertical: 5,
           paddingHorizontal: 10,
-          justifyContent: 'center',
+          justifyContent: 'space-between',
+          flexDirection: 'row',
+          alignItems: 'center',
         }}>
         <TextInput
-          placeholder="Full name"
-          autoCompleteType="name"
-          autoCapitalize="words"
-          keyboardType="name-phone-pad"
-          textContentType="name"
+          style={{width: 200}}
+          placeholder="Old password"
+          autoCompleteType="password"
+          secureTextEntry={hidePass ? true : false}
         />
-      </Neomorph>
-      <Neomorph
-        inner
-        swapShadows // <- change zIndex of each shadow color
-        style={{
-          shadowRadius: 7,
-          borderRadius: 10,
-          backgroundColor: '#E3F1FA',
-          width: 250,
-          height: 50,
-          marginVertical: 5,
-          paddingHorizontal: 10,
-          justifyContent: 'center',
-        }}>
-        <TextInput
-          placeholder="Email"
-          autoCompleteType="email"
-          keyboardType="email-address"
-          textContentType="emailAddress"
+        <Icon
+          name={hidePass ? 'eye-slash' : 'eye'}
+          size={15}
+          color="grey"
+          onPress={() => setHidePass(!hidePass)}
         />
       </Neomorph>
       <Neomorph
@@ -67,9 +60,8 @@ const SignUp = () => {
         }}>
         <TextInput
           style={{width: 200}}
-          placeholder="Password"
+          placeholder="New password"
           autoCompleteType="password"
-          textContentType="password"
           secureTextEntry={hidePass ? true : false}
         />
         <Icon
@@ -98,7 +90,6 @@ const SignUp = () => {
           style={{width: 200}}
           placeholder="Confirm password"
           autoCompleteType="password"
-          textContentType="password"
           secureTextEntry={hidePass ? true : false}
         />
         <Icon
@@ -127,4 +118,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default ForgotPassword;
